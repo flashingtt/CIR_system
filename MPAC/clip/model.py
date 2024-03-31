@@ -800,7 +800,7 @@ def build_model(args, state_dict: dict, design_details):
             clip_image_encoder.load_state_dict(image_encoder_state_dict)
         except:
             missing_keys, _ = clip_image_encoder.load_state_dict(image_encoder_state_dict, strict=False)
-            print('Weights not found for some missing keys: ', missing_keys)
+            # print('Weights not found for some missing keys: ', missing_keys)
 
     if args.fixed_image_encoder:
         vision_heads = vision_width // 64
@@ -822,7 +822,7 @@ def build_model(args, state_dict: dict, design_details):
             fixed_image_encoder.load_state_dict(image_encoder_state_dict)
         except:
             missing_keys, _ = fixed_image_encoder.load_state_dict(image_encoder_state_dict, strict=False)
-            print('Weights not found for some missing keys: ', missing_keys)
+            # print('Weights not found for some missing keys: ', missing_keys)
 
     for key in ["input_resolution", "context_length", "vocab_size"]:
         if key in state_dict:
@@ -833,7 +833,7 @@ def build_model(args, state_dict: dict, design_details):
         model.load_state_dict(state_dict)
     except:
         missing_keys, _ = model.load_state_dict(state_dict, strict=False)
-        print('Weights not found for some missing keys: ', missing_keys)
+        # print('Weights not found for some missing keys: ', missing_keys)
     if args.fixed_image_encoder:
         if args.asynchronous:
             return model.eval(), clip_image_encoder.eval(), fixed_image_encoder.eval()

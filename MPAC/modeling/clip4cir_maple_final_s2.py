@@ -1,3 +1,4 @@
+import pdb
 from collections import OrderedDict
 
 import torch
@@ -245,8 +246,8 @@ class MultiModalPromptLearner(nn.Module):
                     [
                         prefix.expand(bsz, -1, -1),  # (dim0, 1, dim)
                         ctx.expand(bsz, -1, -1),  # (dim0, n_ctx, dim)
-                        suffix[:, 1, :],  # (dim0, *, dim)
-                        text_embedding[:, 1: 76 - ctx.shape[1], :]  # 后面接上text_embedding内容
+                        # suffix[:, 1, :],  # (dim0, *, dim)
+                        text_embedding[:, 1: 77 - ctx.shape[1], :]  # 后面接上text_embedding内容
 
                     ],
                     dim=1,
