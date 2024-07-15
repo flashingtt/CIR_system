@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>471</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>模型</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>20</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>数据集</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>20</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>FashionIQ</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CIRR</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>fiq_mpac.pt</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>cirr_mpac.pt</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>pic2cup.pt</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>浏览</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>浏览</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>471</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QGraphicsView" name="graphicsView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>500</y>
+       <width>451</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>开始检索</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>重新检索</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>0</y>
+       <width>451</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>选择参考图像</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>670</y>
+      <width>471</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>451</width>
+       <height>101</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>10</y>
+       <width>451</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>输入修改文本</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>清空</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTextEdit" name="textEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>451</width>
+       <height>101</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>279</y>
+       <width>451</width>
+       <height>75</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>结果保存路径</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="SaveDirButton">
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_4">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>10</y>
+      <width>1421</width>
+      <height>1011</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QGraphicsView" name="graphicsView_0">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_1">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_2">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_4">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_5">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_0">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_1">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_2">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_4">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_resetRef_5">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>540</y>
+       <width>450</width>
+       <height>450</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>作为参考图像</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_0">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>480</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>文搜图</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_1">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>480</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>图搜图</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>480</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>文+图 搜 图</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_3">
+     <property name="geometry">
+      <rect>
+       <x>1130</x>
+       <y>480</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>图+图 搜 图</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_0">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>450</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_1">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>450</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>970</x>
+       <y>450</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>970</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_4">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>970</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="geometry">
+      <rect>
+       <x>970</x>
+       <y>970</y>
+       <width>68</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_0">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>432</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_1">
+     <property name="geometry">
+      <rect>
+       <x>860</x>
+       <y>430</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_2">
+     <property name="geometry">
+      <rect>
+       <x>1330</x>
+       <y>430</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_3">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>950</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_4">
+     <property name="geometry">
+      <rect>
+       <x>860</x>
+       <y>950</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveButton_5">
+     <property name="geometry">
+      <rect>
+       <x>1330</x>
+       <y>950</y>
+       <width>75</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>保存</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionOpen_2"/>
+    <addaction name="actionSave_2"/>
+    <addaction name="actionSetting"/>
+    <addaction name="actionQuit_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionOpen_2">
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </action>
+  <action name="actionSave_2">
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </action>
+  <action name="actionQuit_2">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionSetting">
+   <property name="text">
+    <string>设置</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_refImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>674</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>retrieval_and_show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>477</x>
+     <y>392</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_dataset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>422</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clear_modificationText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>722</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>689</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clear_all()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>308</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1915</x>
+     <y>538</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_2</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_model()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>load_model()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>117</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>load_data_dir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveDirButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>get_save_dir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>1008</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>1059</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_0</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>557</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1703</x>
+     <y>787</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1665</x>
+     <y>1050</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_0</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>747</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>482</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1864</x>
+     <y>998</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1764</x>
+     <y>1058</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1232</x>
+     <y>799</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1211</x>
+     <y>1051</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1388</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>646</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>794</x>
+     <y>797</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>791</x>
+     <y>1055</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_2</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1478</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1341</x>
+     <y>-11</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_1</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1003</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>487</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_0</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_retrieval_mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>755</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1876</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1730</x>
+     <y>-5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_retrieval_mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1342</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_0</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>931</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>484</x>
+     <y>491</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_3</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>1017</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>1049</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_retrieval_mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1056</x>
+     <y>518</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>489</x>
+     <y>564</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>choose_retrieval_mode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1711</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1812</x>
+     <y>1045</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>938</x>
+     <y>1002</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>990</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1218</x>
+     <y>256</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_4</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1006</x>
+     <y>1003</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>986</x>
+     <y>1053</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_5</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_refImgs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1478</x>
+     <y>1003</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1455</x>
+     <y>1053</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1381</x>
+     <y>997</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1323</x>
+     <y>1057</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_resetRef_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_refImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1696</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1464</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>choose_refImage()</slot>
+  <slot>load_model()</slot>
+  <slot>retrieval_and_show()</slot>
+  <slot>get_mod_text()</slot>
+  <slot>choose_dataset()</slot>
+  <slot>clear_modificationText()</slot>
+  <slot>clear_all()</slot>
+  <slot>reset_refImg()</slot>
+  <slot>choose_model()</slot>
+  <slot>load_data_dir()</slot>
+  <slot>choose_retrieval_mode()</slot>
+  <slot>add_refImgs()</slot>
+  <slot>remove_refImgs()</slot>
+  <slot>save_image()</slot>
+  <slot>get_save_dir()</slot>
+ </slots>
+</ui>

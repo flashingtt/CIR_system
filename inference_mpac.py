@@ -40,7 +40,7 @@ def compute_fiq_val_metrics(args, model, tar_indexfeats: torch.tensor, index_nam
         sorted_index_names = sorted_index_names[reference_mask].reshape(sorted_index_names.shape[0],
                                                                         sorted_index_names.shape[1] - 1)
 
-    result = sorted_index_names[0][:6]
+    result = sorted_index_names[0][:12]
     return result
 
 
@@ -82,6 +82,7 @@ def generate_fiq_val_predictions(args, model, index_names: List[str], tar_indexf
             ref_prompts, ref_tokenized_prompts, ref_shared_ctx, ref_deep_compound_prompts_vision, \
                 ref_deep_compound_prompts_text = model.prompt_learner(text_inputs, fixed_imgfeats)
             text_feats = model.text_encoder(ref_prompts, ref_tokenized_prompts, ref_deep_compound_prompts_text)
+            # pdb.set_trace()
             ref_imgfeats = itemgetter(*[ref_imgName])(name_to_feat).unsqueeze(0)
         if args.retrieval_mode == 'i2i':
             batch_predfeats = ref_imgfeats
@@ -127,10 +128,10 @@ def fashioniq_val_retrieval(args, dress_type: str, model, preprocess: callable, 
 
 
 def compute_cirr_val_metrics(args, model, index_features: torch.tensor, index_names: List[str],
-                             ref_imgName, ref_image, mod_text):
+                             ref_imgName, ref_image, mod_text, ref_images, ref_imgNames):
     # Generate predictions
-    predicted_features, group_members = \
-        generate_cirr_val_predictions(args, model, index_names, index_features, ref_imgName, ref_image, mod_text)
+    predicted_features = \
+        generate_cirr_val_predictions(args, model, index_names, index_features, ref_imgName, ref_image, mod_text, ref_images, ref_imgNames)
 
     print("Compute CIRR validation metrics")
 
@@ -141,49 +142,63 @@ def compute_cirr_val_metrics(args, model, index_features: torch.tensor, index_na
     distances = 1 - predicted_features @ index_features.T
     sorted_indices = torch.argsort(distances, dim=-1).cpu()
     sorted_index_names = np.array(index_names)[sorted_indices]
-
-    result = sorted_index_names[0][:6]
+    
+    result = sorted_index_names[0][:12]
 
     return result
 
 def generate_cirr_val_predictions(args, model, index_names: List[str], index_features: torch.tensor,
-                                  ref_imgName, ref_image, mod_text):
+                                  ref_imgName, ref_image, mod_text, ref_images, ref_imgNames):
     print("Compute CIRR validation predictions")
 
     # Get a mapping from index names to index features
     name_to_feat = dict(zip(index_names, index_features))
 
-    # Initialize predicted features, target_names, group_members and reference_names
+    # Initialize predicted features, target_names and reference_names
     predicted_features = torch.empty((0, model.clip.visual.output_dim)).to(device, non_blocking=True)
-    group_members = []
 
-    text_inputs = clip.tokenize(mod_text).to(device, non_blocking=True)
-    batch_reference_image = ref_image.to(device)
-    batch_reference_image = batch_reference_image.unsqueeze(0)
-    # Compute the predicted features
-    with torch.no_grad():
-        batch_fixed_features = model.fixed_image_encoder(batch_reference_image)
+    if args.retrieval_mode not in ['i2i', 'ii2i']:
+        text_inputs = clip.tokenize(mod_text).to(device, non_blocking=True)
+    else:
+        text_inputs = None
 
+    if args.retrieval_mode == 't2i':
         ref_prompts, ref_tokenized_prompts, ref_shared_ctx, ref_deep_compound_prompts_vision, \
-            ref_deep_compound_prompts_text = model.prompt_learner(text_inputs, batch_fixed_features)
-
+            ref_deep_compound_prompts_text = model.prompt_learner(text_inputs)
         text_feats = model.text_encoder(ref_prompts, ref_tokenized_prompts, ref_deep_compound_prompts_text)
-        ref_imgfeats = itemgetter(*[ref_imgName])(name_to_feat).unsqueeze(0)
-        if args.retrieval_mode == 't2i':
-            batch_predicted_features = text_feats
-        elif args.retrieval_mode == 'i2i':
+        batch_predicted_features = text_feats
+    elif args.retrieval_mode == 'i2i' or args.retrieval_mode == 'it2i':
+        batch_reference_image = ref_image.to(device)
+        batch_reference_image = batch_reference_image.unsqueeze(0)
+        # Compute the predicted features
+        with torch.no_grad():
+            batch_fixed_features = model.fixed_image_encoder(batch_reference_image)
+
+            ref_prompts, ref_tokenized_prompts, ref_shared_ctx, ref_deep_compound_prompts_vision, \
+                ref_deep_compound_prompts_text = model.prompt_learner(text_inputs, batch_fixed_features)
+
+            text_feats = model.text_encoder(ref_prompts, ref_tokenized_prompts, ref_deep_compound_prompts_text)
+            ref_imgfeats = itemgetter(*[ref_imgName])(name_to_feat).unsqueeze(0)
+        if args.retrieval_mode == 'i2i':
             batch_predicted_features = ref_imgfeats
-        elif args.retrieval_mode == 'it2i':
-            batch_predicted_features = model.combiner(ref_imgfeats, text_feats)
-        elif args.retrieval_mode == 'ii2i':
-            raise NotImplementedError
+        else:
+            with torch.no_grad():
+                batch_predicted_features = model.combiner(ref_imgfeats, text_feats)
+    elif args.retrieval_mode == 'ii2i':
+        ref_imgfeats_list = []
+        for i in range(len(ref_images)):
+            ref_images[i] = ref_images[i].to(device)
+            ref_images[i] = ref_images.unsqueeze(0)
+            ref_imgfeats_list.append(itemgetter(*[ref_imgNames[i]])(name_to_feat).unsqueeze(0))
+        stacked_tensor = torch.stack(ref_imgfeats_list, dim=0)
+        batch_predicted_features = torch.sum(stacked_tensor, dim=0)
 
-        predicted_features = torch.vstack((predicted_features, F.normalize(batch_predicted_features, dim=-1)))
+    predicted_features = torch.vstack((predicted_features, F.normalize(batch_predicted_features, dim=-1)))
 
-    return predicted_features, group_members
+    return predicted_features
 
 
-def cirr_val_retrieval(args, model, preprocess: callable, ref_imgName, ref_image, mod_text):
+def cirr_val_retrieval(args, model, preprocess: callable, ref_imgName, ref_image, mod_text, ref_images, ref_imgNames):
 
     if not os.path.exists('cache_data/cirr_mpac_index_features.pkl'):
         classic_val_dataset = CIRRDataset('val', 'classic', preprocess)
@@ -199,7 +214,7 @@ def cirr_val_retrieval(args, model, preprocess: callable, ref_imgName, ref_image
         with open('cache_data/cirr_mpac_index_names.pkl', 'rb') as g:
             index_names = pickle.load(g)
 
-    return compute_cirr_val_metrics(args, model, index_features, index_names, ref_imgName, ref_image, mod_text)
+    return compute_cirr_val_metrics(args, model, index_features, index_names, ref_imgName, ref_image, mod_text, ref_images, ref_imgNames)
 
 
 def get_args():
@@ -319,7 +334,7 @@ def get_args():
 def inference_mpac(dataset, model_path, mode, style, ref_imgPath=None, mod_text=None, ref_imgPath_list=None):
     args = get_args()
     args.retrieval_mode = mode
-
+    
     if args.network in train_models_map.keys():
         model = train_models_map[args.network](args)
     else:
@@ -359,7 +374,7 @@ def inference_mpac(dataset, model_path, mode, style, ref_imgPath=None, mod_text=
         ref_imgName = None
 
     if dataset.lower() == 'cirr':
-        res = cirr_val_retrieval(args, model, preprocess, ref_imgName, ref_image, mod_text)
+        res = cirr_val_retrieval(args, model, preprocess, ref_imgName, ref_image, mod_text, ref_images, ref_imgNames)
 
     elif dataset.lower() == 'fashioniq':
         res = fashioniq_val_retrieval(args, style, model, preprocess, ref_imgName, ref_image, mod_text,
@@ -368,9 +383,10 @@ def inference_mpac(dataset, model_path, mode, style, ref_imgPath=None, mod_text=
     return res
 
 def main():
-    dataset = 'fashioniq'
-    model_path = 'models/fiq_mpac.pt'
-    ref_imgPath = 'D:/pycharm/CIR_system/reference_images/FashionIQ/shirt/B00A0KOAUG.png'
+    dataset = 'cirr'
+    model_path = 'models/cirr_mpac.pt'
+    # ref_imgPath = 'D:/pycharm/CIR_system/reference_images/FashionIQ/shirt/B00A0KOAUG.png'
+    ref_imgPath = 'D:/pycharm/CIR_system/reference_images/CIRR/dev-1-0-img1.png'
     # ref0 = 'D:/pycharm/CIR_system/reference_images/FashionIQ/shirt/B00A0KOAUG.png'
     # ref1 = 'D:/pycharm/CIR_system/reference_images/FashionIQ/shirt/B00A0NDRUC.png'
     # list = [ref0, ref1]

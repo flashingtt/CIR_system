@@ -197,9 +197,8 @@ def get_cirr_result(args, database_features, query_features, ref_imgName, index_
 
 
 
-def inference_pic2cup(dataset, model_path, ref_imgPath, mod_text, mode):
+def inference_pic2cup(dataset, model_path, mode, ref_imgPath, mod_text, ref_imgPath_list):
     args = parse_args()
-
     args.retrieval_mode = mode
 
     model, img2text, prompt_learner, preprocess_val = load_p2cmodel(args, model_path)
@@ -245,7 +244,9 @@ def main():
     model_path = 'models/pic2cup.pt'
     ref_imgPath = 'reference_images/CIRR/dev-1-0-img1.png'
     mod_text = ['is a smaller one']
-    res = inference_pic2cup(dataset, model_path, ref_imgPath, mod_text, mode)
+    mode = 't2i'
+    ref_imgPath_list = []
+    res = inference_pic2cup(dataset, model_path, mode, ref_imgPath, mod_text, ref_imgPath_list)
     print(res)
 
 
